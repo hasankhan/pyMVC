@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>Mobile app</title>
+  </head>
+  <body>
+    {% for message in get_flashed_messages() %}
+        <p>flash::{{ message }} </p>
+      {% endfor %}
+
+      {% macro render_error(field) %}
+        {% if field.errors %}
+          {% for error in field.errors %}<span>error::{{ error }}</span>{% endfor %}
+        {% endif %}
+      {% endmacro %}
+
+      {% block body %}{% endblock %}
+  <body>
+</html>

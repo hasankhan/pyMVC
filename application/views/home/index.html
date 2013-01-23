@@ -1,0 +1,6 @@
+{% extends "layout/minimal.html" %}
+
+{% block body %}
+<h1>{{message}} to desktop world! {{app.config.environment}}</h1>
+<a href="{{url_for('register')}}">click here to register</a>
+{% endblock %}

@@ -1,0 +1,7 @@
+# desktop specific javascript
+js_login:
+    filters: jsmin
+    output: compiled/login.%(version)s.js
+    contents:
+        - scripts/libs/less-min.js
+        - scripts/libs/require-min.js

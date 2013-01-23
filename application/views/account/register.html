@@ -1,0 +1,34 @@
+{% extends "layout/minimal.html" %}
+
+{% block body %}
+{% from "shared/form_helpers.html" import render_field %}
+<form method=post action="{{url_for('register_post')}}">
+  <dl>
+	{{ model.csrf_token }}
+    {{ render_field(model.username) }} <input type="button" id="check" value="Check" />
+    {{ render_field(model.email) }}
+    {{ render_field(model.password) }}
+    {{ render_field(model.confirm) }}
+    {{ render_field(model.accept_tos) }}
+  </dl>
+  <p><input type=submit value=Register>
+</form>
+
+<script type=text/javascript src="{{url_for('static', filename='scripts/libs/jquery-min.js')}}"></script>
+<script type=text/javascript>
+  $(function() {
+    $('#check').bind('click', function() {
+      $.getJSON('{{url_for('check_username')}}', {
+        username: $('input[name="username"]').val()
+      }, function(data) {
+		if (data.result)
+			alert ("Username already exists");
+		else
+			alert ("Good to go!");
+      });
+      return false;
+    });
+  });
+</script>
+
+{% endblock %}

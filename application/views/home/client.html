@@ -1,0 +1,11 @@
+{% extends "layout/minimal.html" %}
+
+{% block body %}
+<h1>This is a single page client application {{now}}</h1>
+<div id="app"></div>
+<script type='text/javascript'>
+requireJsBaseUrl = "{{url_for('static', filename='scripts/clientApp')}}";
+jsConfig = "{{app.config.ENVIRONMENT}}";
+</script>
+<script data-main="{{url_for('static', filename='scripts/clientApp/bootstrapper.js')}}" src="{{url_for('static', filename='scripts/libs/require-min.js')}}"></script>
+{% endblock %}
